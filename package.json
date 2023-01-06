@@ -1,0 +1,15 @@
+{
+  "name": "expressjsserver",
+  "version": "1.0.0",
+  "description": "express server\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dweb server node js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
