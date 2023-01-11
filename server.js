@@ -5,8 +5,15 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.get("/", (req, res)=>{
+    res.sendFile(__dirname + "/index.html");
+});
+app.post("/", (req, res)=>{
+    let jokeBaseUrl = "https://v2.jokeapi.dev/joke/Any?idRange=";
+    let jokeId = req.body.jokeNr;
+    let jokeUrl = jokeBaseUrl + jokeId + "-" + jokeId;
 
-app.get("/", (req, res) => {https.get("https://v2.jokeapi.dev/joke/Programming", function(result){
+   https.get(jokeUrl, function(result){
     console.log("\n new joke");
     result.on("data", (chunk) =>{
         const randomJoke = JSON.parse(chunk.toString());
@@ -32,6 +39,8 @@ app.get("/", (req, res) => {https.get("https://v2.jokeapi.dev/joke/Programming",
 });
 
 });
+
+
 
 app.listen(3000, function(){console.log("Listening on port 3000 ...");});
 
