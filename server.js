@@ -15,10 +15,16 @@ app.get("/", (req, res) => {https.get("https://v2.jokeapi.dev/joke/Programming",
         if(randomJoke.type == "single")
         {
             // If type == "single", the joke only has the "joke" property
-            res.send(randomJoke.joke + "   ha ha hi");
+            //żaden inny nagłówek nie działa, hehehe
+            res.write("<h1>this is a single joke </h1>");
+            res.write(randomJoke.joke + " <br>  ha ha hi");
+            res.send();         //send można użyć TYLKO RAZ !!!
         }
         else{
-            res.send(randomJoke.setup + "  " + randomJoke.delivery);
+            res.write("<h1>This is a two-part joke</h1>");
+            res.write(randomJoke.setup + "<br>");
+            res.write(randomJoke.delivery);
+            res.send();
         }
 
 });
